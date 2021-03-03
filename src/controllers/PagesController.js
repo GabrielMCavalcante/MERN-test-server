@@ -16,7 +16,7 @@ class PagesController {
   static async create(req, res) {
     const { name } = req.params
 
-    const client = await connection
+    const client = await MongoClient.connect("mongodb+srv://root:mu45asfghjkl@cluster0.bgoqo.mongodb.net/mern_job_test_database?retryWrites=true&w=majority", { useUnifiedTopology: true })
     const db = client.db(DB_NAME)
 
     const pageExists = await db.collection("pages").findOne({ name })
