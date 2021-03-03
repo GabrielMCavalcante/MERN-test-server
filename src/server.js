@@ -6,7 +6,7 @@ require("./database/connection")
 const app = express()
 const PORT = 3333
 
-app.use(cors())
+app.use(cors({ allowedHeaders: "*" }))
 app.use(express.json())
 app.use(routes)
 
