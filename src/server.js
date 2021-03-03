@@ -1,7 +1,6 @@
 const express = require("express")
 const { routes } = require("./routes")
 const cors = require("cors")
-require("./database/connection")
 
 const app = express()
 const PORT = 3333
