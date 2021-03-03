@@ -1,17 +1,16 @@
-const connection = require("../database/connection")
+const { MongoClient } = require("mongodb");
 
 const DB_NAME = "mern_job_test_database"
 class PagesController {
   static async index(req, res) {
-    return res.send("ok index")
-    // const client = await connection
-    // const db = client.db(DB_NAME)
+    const client = await MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
+    const db = client.db(DB_NAME)
     
-    // const pages = await db.collection("pages").find().toArray()
+    const pages = await db.collection("pages").find().toArray()
 
-    // return res.status(200).json({
-    //   data: pages
-    // })
+    return res.status(200).json({
+      data: pages
+    })
   }
 
   static async create(req, res) {
